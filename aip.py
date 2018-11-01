@@ -13,13 +13,12 @@ print(hdulist.info())
 print(hdulist[0].data[1,1])
 data=hdulist[0].data
 data=np.ndarray.flatten(data)
-#plt.xlim(3300,3600)
-plt.hist(data, bins='auto')
-#mahesh = np.histogram(a=hdulist[0].data, bins=10000)
-#plt.
+data_2=data[data < 3550]
+plt.xlim(3300,3550)
+#plt.ylim(0,400000)
+unique = []
+[unique.append(item) for item in data_2 if item not in unique]
+plt.hist(data_2, bins=len(unique))
+print(np.mean(data_2))
 
-
-#plt.figure()
-#plt.imshow(image_data, cmap='gray')
-#plt.colorbar()
 
