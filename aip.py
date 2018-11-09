@@ -18,6 +18,10 @@ data_2=[]
 unique = []
 [unique.append(item) for item in data_2 if item not in unique]
 
+def mask(data=data):
+    data[657,2530]=0
+    circle(3443,2562,2)
+    
 def histogram(data_2):
     plt.xlim(3300,3550)
     plt.ylim(0,400000)
@@ -25,8 +29,6 @@ def histogram(data_2):
     plt.show()
 
 bkgd = np.mean(data_2)
-print(max(data_list))
-print(data_list.count(max(data_list))) #number of occurences of max pixel
 
 def max_pixel(data): 
     max_pix_index = np.unravel_index(data.argmax(), data.shape)
@@ -36,9 +38,9 @@ def magnitude(x,y,radius,localbkgd = bkgd, ZPinst=ZPinst):
     total_intensity = 0
     numberofpoints = 0
     cx, cy = x,y 
-    y,x = np.ogrid[-radius: radius+1, -radius: radius+1]
+    x,y = np.ogrid[-radius: radius+1, -radius: radius+1]
     index = x**2 + y**2 <= radius**2
-    for i in data[cy-radius:cy+radius+1, cx-radius:cx+radius+1][index]:
+    for i in data[cx-radius:cx+radius+1, cy-radius:cy+radius+1][index]:
         total_intensity += i
         numberofpoints += 1
 
@@ -51,27 +53,36 @@ def circle(x,y,radius, data=data):
     cx, cy = x,y
     y,x = np.ogrid[-radius: radius+1, -radius: radius+1]
     index = x**2 + y**2 <= radius**2
-    c = data[cy-radius:cy+radius+1, cx-radius:cx+radius+1][index]
-    return c
+    data[cx-radius:cx+radius+1, cy-radius:cy+radius+1][index] = 0
+    
 
 def local_background(x, y):
-   "get radius, local background level, max value"
-   max_value = data[y,x]
+   max_value = data[x,y]
    radius = 0         
    meanpoints = []   
-   means = data[y, x]
+   means = max_value
    meanpoints.append(means)
    
    radius = 1
-   means = np.mean((data[y, x +  radius],data[(y + radius),x],data[y,x - (radius)],data[y - (radius ),x]))
+   means = np.mean((data[x, y +  radius],data[(x + radius),y],data[x,y - (radius)],data[x - (radius ),y]))
    meanpoints.append(means)
    
    while (abs(meanpoints[-1] - meanpoints[-2])) > 5 and meanpoints[-1] > 3400:
        radius +=1                
-       means = np.mean((data[y, x +  radius],data[(y + radius),x], data[y,x - (radius)],data[y - (radius ),x]))
+       means = np.mean((data[x, y +  radius],data[(x + radius),y],data[x,y - (radius)],data[x - (radius ),y]))
        meanpoints.append(means)
              
-   return radius, meanpoints[-1], max_value
+   return radius, meanpoints[-1], meanpoints[0]
+
+
+
+
+
+#plt.figure()
+#plt.imshow(image_data, cmap='gray')
+#plt.colorbar()
+
+
 
 
 
