@@ -82,7 +82,42 @@ def local_background(x, y):
 #plt.imshow(image_data, cmap='gray')
 #plt.colorbar()
 
+def mask(array = array):
+    array[0:4612, 1425:1450] = 0 #middle 
 
+    array[0:4612, 2477:2570] = 0 #right bar
+    array[0:4612, 0:116]= 0 # left bar
+    array[4512:4612, 0:2570]= 0 # top
+    array[0:116, 0:2570]= 0 # bottom
+
+    array[218:261, 1388:1477] = 0
+    array[115:142, 1386:1469] = 0
+    array[142:162, 1409:1425] = 0
+    array[142:147, 1449:1454] = 0
+    array[116:152, 1450:1540] = 0
+    array[123:133, 1289:1387] = 0
+    array[311:320, 1021:1705] = 0
+    array[315:372, 1411:1468] = 0
+    array[319:346, 1314:1541] = 0
+    array[426:438, 1104:1652] = 0
+    array[434:472, 1366:1490] = 0
+
+    circle(1428,3250,400)
+    circle(907,2290,77)
+    circle(977,2776,57)
+    circle(2134,3761,48)
+    circle(2133,2311,38)
+    circle(2089,1419,69) 
+    circle(775,3319,118)
+
+    outputFileName = "masked7.fits"
+    outputFileName = outputFileName.replace("#", strftime("%Y%m%d__%H_%M_%S", gmtime()))
+    filename = str(outputFileName)
+
+
+    #plt.imshow(hdulist, cmap = 'Greys_r', origin = [0,0])
+    #plt.colorbar()
+    hdulist.writeto(filename)
 
 
 
