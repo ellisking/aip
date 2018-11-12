@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
 from astropy.io import fits
 from statistics import mode
 import matplotlib.pyplot as plt
@@ -18,16 +24,20 @@ def mask(data=data):
     data[116:data.shape[0], 0:116] = 0
     data[(data.shape[0]-116):data.shape[0], 116:data.shape[1]] = 0
     data[116:(data.shape[0]-116), (data.shape[1]-116):data.shape[1]] = 0
-    "masked sources"
-    data[657,2530]=0
-    circle(3443,2562,2)
-    circle(3600,2535,3)
-    data[4548,1054]=0
-    circle(206,1433,37)
-    circle(2261,904,23)
-    circle(2286,905,30)
-    circle(1495,634,21)
-    circle(3296,775,10)
+    "masked middle star"
+    data[0:4612, 1425:1450] = 0
+    data[218:261, 1388:1477] = 0
+    data[115:142, 1386:1469] = 0
+    data[142:162, 1409:1425] = 0
+    data[142:147, 1449:1454] = 0
+    data[116:152, 1450:1540] = 0
+    data[123:133, 1289:1387] = 0
+    data[311:320, 1021:1705] = 0
+    data[315:372, 1411:1468] = 0
+    data[319:346, 1314:1541] = 0
+    data[426:438, 1104:1652] = 0
+    data[434:472, 1366:1490] = 0
+    circle(3204,1444,415)
     
 def histogram(data_2):
     plt.xlim(3300,3550)
@@ -86,7 +96,7 @@ def circle(x,y,radius, data=data):
     data[cx-radius:cx+radius+1, cy-radius:cy+radius+1][index] = 0
         
 
-def local_background(x, y):
+def radius(x, y):
    max_value = data[x,y]
    radius = 0         
    meanpoints = []   
@@ -142,7 +152,6 @@ def edgethickness(x, y,axis, value = 3421):
 #plt.figure()
 #plt.imshow(image_data, cmap='gray')
 #plt.colorbar()
-
 
 
 
