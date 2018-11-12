@@ -1,0 +1,5 @@
+#and abs(np.array(data[x,y+yplus])-np.array(data[x,y+yplus-1])) > 5:
+#and abs(np.array(data[x,y-yminus])-np.array(data[x,y-yminus+1])) > 5:
+#and abs(np.array(data[x+xplus,y])-np.array(data[x+xplus-1,y])) > 5:
+#and abs(np.array(data[x-xminus,y])-np.array(data[x-xminus+1,y])) > 5:
+ and (abs(meanpoints[-1] - meanpoints[-2])) > 5
