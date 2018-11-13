@@ -3,3 +3,12 @@
 #and abs(np.array(data[x+xplus,y])-np.array(data[x+xplus-1,y])) > 5:
 #and abs(np.array(data[x-xminus,y])-np.array(data[x-xminus+1,y])) > 5:
  and (abs(meanpoints[-1] - meanpoints[-2])) > 5
+ 
+#    if cx < data.shape[0]/2 and cx < radius:
+#        cx = radius
+#    if cy < data.shape[1]/2 and cy < radius:
+#        cy = radius
+#    if cx > data.shape[0]/2 and (data.shape[0] - cx) < radius:
+#        cx = data.shape[0] - radius - 1
+#    if cy > data.shape[1]/2 and (data.shape[1] - cy) < radius:
+#        cy = data.shape[1] - radius - 1
