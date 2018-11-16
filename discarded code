@@ -12,3 +12,49 @@
 #        cx = data.shape[0] - radius - 1
 #    if cy > data.shape[1]/2 and (data.shape[1] - cy) < radius:
 #        cy = data.shape[1] - radius - 1
+
+#def logdata():
+#    maxpix = max_pixel()
+#    realcentre1 = realcentre(maxpix[0], maxpix[1])
+#    if data[realcentre1[0],realcentre1[1]] != 0:
+#        radius1 = radius(realcentre1[0], realcentre1[1])
+#    if data[realcentre1[0],realcentre1[1]] == 0:
+#        radius1 = radius(maxpix[0],maxpix[1])
+#    mag = magnitude(realcentre1[0], realcentre1[1], radius1[0])
+#    circle(realcentre1[0], realcentre1[1], radius1[0])
+#    return maxpix[0], maxpix[1], radius1[0], mag[1] 
+#    
+#ypos=[]
+#xpos=[]
+#radii=[]
+#magn=[]
+#for i in range(1000):
+#    maxx2=max_pixel()
+#    maxx = data[maxx2[0],maxx2[1]]
+#    if maxx >= 3623.5:
+#        vals=logdata()
+#        ypos.append(vals[0])
+#        xpos.append(vals[1]) 
+#        radii.append(vals[2])
+#        magn.append(vals[3])
+#    if maxx < 3623.5:
+#        break
+##    
+#radii = np.asarray(radii)
+#ypos = np.asarray(ypos)
+#xpos = np.asarray(xpos)
+#magn = np.asarray(magn)
+#index = radii > 1
+#radii = radii[index]
+#ypos = ypos[index]
+#xpos=xpos[index]
+#magn=magn[index]
+
+
+
+    
+
+
+#plt.figure()
+#plt.imshow(image_data, cmap='gray')
+#plt.colorbar()
